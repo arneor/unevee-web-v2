@@ -110,7 +110,7 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden" id="contact">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background-secondary" />
 
@@ -180,247 +180,231 @@ const CTA = () => {
               Get Started Free
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-border text-foreground hover:bg-card glass-effect text-lg px-8 py-6"
-              onClick={() => setShowContactForm(!showContactForm)}
-            >
-              <MessageSquare className="w-5 h-5 mr-2" />
-              {showContactForm ? "Hide Contact Form" : "Get in Touch"}
-            </Button>
           </div>
 
           {/* Contact Form Section */}
-          {showContactForm && (
-            <div
-              className="animate-fade-in-up"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <div className="glass-card p-8 rounded-2xl border border-border-subtle mb-16">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                  {/* Contact Form */}
-                  <div className="space-y-8">
-                    <div>
-                      <h3 className="text-3xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-                        Let's Connect
-                      </h3>
-                      <p className="text-muted-foreground text-lg">
-                        Tell us about your fitness business and how we can help
-                        you grow.
-                      </p>
-                    </div>
 
-                    {!isSubmitted ? (
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="relative">
-                            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <input
-                              type="text"
-                              placeholder="Your Name"
-                              value={formData.name}
-                              onChange={(e) =>
-                                handleInputChange("name", e.target.value)
-                              }
-                              className={`w-full pl-10 pr-4 py-3 bg-background/50 border rounded-xl focus:outline-none focus:border-primary transition-all ${
-                                errors.name ? "border-red-500" : "border-border"
-                              }`}
-                            />
-                            {errors.name && (
-                              <p className="text-red-500 text-sm mt-1">
-                                {errors.name}
-                              </p>
-                            )}
-                          </div>
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <div className="glass-card p-8 rounded-2xl border border-border-subtle mb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Contact Form */}
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-3xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+                      Let's Connect
+                    </h3>
+                    <p className="text-muted-foreground text-lg">
+                      Tell us about your fitness business and how we can help
+                      you grow.
+                    </p>
+                  </div>
 
-                          <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <input
-                              type="email"
-                              placeholder="Email Address"
-                              value={formData.email}
-                              onChange={(e) =>
-                                handleInputChange("email", e.target.value)
-                              }
-                              className={`w-full pl-10 pr-4 py-3 bg-background/50 border rounded-xl focus:outline-none focus:border-primary transition-all ${
-                                errors.email
-                                  ? "border-red-500"
-                                  : "border-border"
-                              }`}
-                            />
-                            {errors.email && (
-                              <p className="text-red-500 text-sm mt-1">
-                                {errors.email}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-
+                  {!isSubmitted ? (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="relative">
-                          <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                           <input
                             type="text"
-                            placeholder="Company (Optional)"
-                            value={formData.company}
+                            placeholder="Your Name"
+                            value={formData.name}
                             onChange={(e) =>
-                              handleInputChange("company", e.target.value)
+                              handleInputChange("name", e.target.value)
                             }
-                            className="w-full pl-10 pr-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:border-primary transition-all"
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div>
-                            <label className="block text-foreground text-sm mb-2">
-                              I am a
-                            </label>
-                            <select
-                              value={formData.audience}
-                              onChange={(e) =>
-                                handleInputChange("audience", e.target.value)
-                              }
-                              className="w-full px-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:border-primary"
-                            >
-                              <option value="Business">Business</option>
-                              <option value="User">User</option>
-                            </select>
-                          </div>
-                          <div>
-                            <label className="block text-foreground text-sm mb-2">
-                              Topic
-                            </label>
-                            <select
-                              value={formData.topic}
-                              onChange={(e) =>
-                                handleInputChange("topic", e.target.value)
-                              }
-                              className="w-full px-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:border-primary"
-                            >
-                              <option value="Sales Demo">Sales Demo</option>
-                              <option value="Partnership">Partnership</option>
-                              <option value="Support">Support</option>
-                              <option value="Other">Other</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <div className="relative">
-                          <MessageSquare className="absolute left-3 top-4 h-5 w-5 text-muted-foreground" />
-                          <textarea
-                            placeholder="Tell us about your project..."
-                            rows={4}
-                            value={formData.message}
-                            onChange={(e) =>
-                              handleInputChange("message", e.target.value)
-                            }
-                            className={`w-full pl-10 pr-4 py-4 bg-background/50 border rounded-xl focus:outline-none focus:border-primary transition-all resize-none ${
-                              errors.message
-                                ? "border-red-500"
-                                : "border-border"
+                            className={`w-full pl-10 pr-4 py-3 bg-background/50 border rounded-xl focus:outline-none focus:border-primary transition-all ${
+                              errors.name ? "border-red-500" : "border-border"
                             }`}
                           />
-                          {errors.message && (
+                          {errors.name && (
                             <p className="text-red-500 text-sm mt-1">
-                              {errors.message}
+                              {errors.name}
                             </p>
                           )}
                         </div>
 
-                        {errors.submit && (
-                          <p className="text-red-500 text-sm">
-                            {errors.submit}
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <input
+                            type="email"
+                            placeholder="Email Address"
+                            value={formData.email}
+                            onChange={(e) =>
+                              handleInputChange("email", e.target.value)
+                            }
+                            className={`w-full pl-10 pr-4 py-3 bg-background/50 border rounded-xl focus:outline-none focus:border-primary transition-all ${
+                              errors.email ? "border-red-500" : "border-border"
+                            }`}
+                          />
+                          {errors.email && (
+                            <p className="text-red-500 text-sm mt-1">
+                              {errors.email}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="relative">
+                        <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <input
+                          type="text"
+                          placeholder="Company (Optional)"
+                          value={formData.company}
+                          onChange={(e) =>
+                            handleInputChange("company", e.target.value)
+                          }
+                          className="w-full pl-10 pr-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:border-primary transition-all"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-foreground text-sm mb-2">
+                            I am a
+                          </label>
+                          <select
+                            value={formData.audience}
+                            onChange={(e) =>
+                              handleInputChange("audience", e.target.value)
+                            }
+                            className="w-full px-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:border-primary"
+                          >
+                            <option value="Business">Business</option>
+                            <option value="User">User</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-foreground text-sm mb-2">
+                            Topic
+                          </label>
+                          <select
+                            value={formData.topic}
+                            onChange={(e) =>
+                              handleInputChange("topic", e.target.value)
+                            }
+                            className="w-full px-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:border-primary"
+                          >
+                            <option value="Sales Demo">Sales Demo</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Support">Support</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="relative">
+                        <MessageSquare className="absolute left-3 top-4 h-5 w-5 text-muted-foreground" />
+                        <textarea
+                          placeholder="Tell us about your project..."
+                          rows={4}
+                          value={formData.message}
+                          onChange={(e) =>
+                            handleInputChange("message", e.target.value)
+                          }
+                          className={`w-full pl-10 pr-4 py-4 bg-background/50 border rounded-xl focus:outline-none focus:border-primary transition-all resize-none ${
+                            errors.message ? "border-red-500" : "border-border"
+                          }`}
+                        />
+                        {errors.message && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.message}
                           </p>
                         )}
-
-                        <Button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 py-3 group"
-                        >
-                          {isSubmitting ? (
-                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : (
-                            <>
-                              <Send className="h-5 w-5 mr-2" />
-                              Send Message
-                              <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                            </>
-                          )}
-                        </Button>
-                      </form>
-                    ) : (
-                      <div className="text-center py-8">
-                        <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center mx-auto mb-4">
-                          <CheckCircle className="w-8 h-8 text-success" />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-2">Thank you!</h3>
-                        <p className="text-muted-foreground mb-6">
-                          We've received your message. Our team will respond
-                          within 24 hours.
-                        </p>
-                        <Button
-                          variant="outline"
-                          onClick={() => {
-                            setIsSubmitted(false);
-                            setFormData({
-                              name: "",
-                              email: "",
-                              company: "",
-                              audience: "Business",
-                              topic: "Sales Demo",
-                              message: "",
-                            });
-                          }}
-                          className="glass-effect"
-                        >
-                          Send Another Message
-                        </Button>
                       </div>
-                    )}
+
+                      {errors.submit && (
+                        <p className="text-red-500 text-sm">{errors.submit}</p>
+                      )}
+
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 py-3 group"
+                      >
+                        {isSubmitting ? (
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        ) : (
+                          <>
+                            <Send className="h-5 w-5 mr-2" />
+                            Send Message
+                            <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </>
+                        )}
+                      </Button>
+                    </form>
+                  ) : (
+                    <div className="text-center py-8">
+                      <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-8 h-8 text-success" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Thank you!</h3>
+                      <p className="text-muted-foreground mb-6">
+                        We've received your message. Our team will respond
+                        within 24 hours.
+                      </p>
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setIsSubmitted(false);
+                          setFormData({
+                            name: "",
+                            email: "",
+                            company: "",
+                            audience: "Business",
+                            topic: "Sales Demo",
+                            message: "",
+                          });
+                        }}
+                        className="glass-effect"
+                      >
+                        Send Another Message
+                      </Button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Contact Methods */}
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">
+                      Other ways to reach us
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Choose the method that works best for you.
+                    </p>
                   </div>
 
-                  {/* Contact Methods */}
-                  <div className="space-y-8">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-4">
-                        Other ways to reach us
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Choose the method that works best for you.
-                      </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      {contactMethods.map((method, index) => (
-                        <a
-                          key={index}
-                          href={method.link}
-                          className="block p-4 glass-card rounded-xl border border-border-subtle hover:bg-card/50 transition-all group"
-                        >
-                          <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                              <method.icon className="w-6 h-6 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold mb-1">
-                                {method.title}
-                              </h4>
-                              <p className="text-muted-foreground text-sm mb-1">
-                                {method.description}
-                              </p>
-                              <p className="font-medium">{method.value}</p>
-                            </div>
-                            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                  <div className="space-y-4">
+                    {contactMethods.map((method, index) => (
+                      <a
+                        key={index}
+                        href={method.link}
+                        className="block p-4 glass-card rounded-xl border border-border-subtle hover:bg-card/50 transition-all group"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                            <method.icon className="w-6 h-6 text-primary" />
                           </div>
-                        </a>
-                      ))}
-                    </div>
+                          <div className="flex-1">
+                            <h4 className="font-semibold mb-1">
+                              {method.title}
+                            </h4>
+                            <p className="text-muted-foreground text-sm mb-1">
+                              {method.description}
+                            </p>
+                            <p className="font-medium">{method.value}</p>
+                          </div>
+                          <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
-          )}
+          </div>
 
           {/* Trust indicators */}
           <div
